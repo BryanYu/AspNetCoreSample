@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCoreRazorSample", "As
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCoreMvcSample", "AspNetCoreMvcSample\AspNetCoreMvcSample.csproj", "{1D8F6A49-176D-4938-8995-A283C8B61512}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetCoreBlazor", "AspNetCoreBlazor\AspNetCoreBlazor.csproj", "{9E3D78A3-D0C4-4BB3-B1DA-CD9724D76F9C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCoreBlazor", "AspNetCoreBlazor\AspNetCoreBlazor.csproj", "{9E3D78A3-D0C4-4BB3-B1DA-CD9724D76F9C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
