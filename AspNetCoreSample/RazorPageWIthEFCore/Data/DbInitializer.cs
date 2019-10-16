@@ -8,7 +8,7 @@ namespace RazorPageWIthEFCore.Data
     {
         public static void Initalize(SchoolContext context)
         {
-            context.Database.EnsureCreated();
+            //context.Database.EnsureCreated();
 
             if (context.Students.Any())
             {
