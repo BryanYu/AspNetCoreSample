@@ -29,7 +29,7 @@ namespace RazorPageWIthEFCore
                 try
                 {
                     var context = services.GetRequiredService<SchoolContext>();
-                    context.Database.EnsureCreated();
+                    DbInitializer.Initalize(context);
                 }
                 catch (Exception ex)
                 {

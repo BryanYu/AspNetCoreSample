@@ -12,8 +12,9 @@ namespace RazorPageWIthEFCore.Models
 
         public string FirstMidName { get; set; }
 
-        public DateTime EnrollDate { get; set; }
+        public DateTime EnrollmentDate { get; set; }
 
         public ICollection<Enrollment> Enrollments { get; set; }
+        
     }
 }
