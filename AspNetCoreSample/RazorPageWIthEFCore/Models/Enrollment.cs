@@ -1,4 +1,6 @@
-﻿namespace RazorPageWIthEFCore.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace RazorPageWIthEFCore.Models
 {
     public enum Grade
     {
@@ -17,9 +19,10 @@
 
         public int StudentID { get; set; }
 
+        [DisplayFormat(NullDisplayText = "No grade")]
         public Grade? Grade { get; set; }
 
-        public Course Cource { get; set; }
+        public Course Course { get; set; }
 
         public Student Student { get; set; }
     }

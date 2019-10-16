@@ -30,7 +30,7 @@ namespace RazorPageWIthEFCore.Pages.Students
 
             Student = await _context.Students
                 .Include(item => item.Enrollments)
-                .ThenInclude(item2 => item2.Cource)
+                .ThenInclude(item2 => item2.Course)
                 .AsNoTracking()
                 .FirstOrDefaultAsync(item3 => item3.ID == id);
 
