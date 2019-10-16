@@ -20,7 +20,7 @@ namespace RazorPageWIthEFCore.Pages.Students
             _context = context;
         }
 
-        public IList<Student> Students { get;set; }
+        public PaginatedList<Student> Students { get;set; }
 
         public string NameSort { get; set; }
 
@@ -30,10 +30,20 @@ namespace RazorPageWIthEFCore.Pages.Students
 
         public string CurrentSort { get; set; }
 
-        public async Task OnGetAsync(string sortOrder, string searchString)
+        public async Task OnGetAsync(string sortOrder, string currentFilter, string searchString, int? pageIndex)
         {
+            CurrentSort = sortOrder;
             NameSort = string.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             DateSort = sortOrder == "Date" ? "date_desc" : "Date";
+            if (searchString != null)
+            {
+                pageIndex = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
             CurrentFilter = searchString;
 
             IQueryable<Student> studentIQ = from s in _context.Students select s;
@@ -60,7 +70,8 @@ namespace RazorPageWIthEFCore.Pages.Students
                     break;
             }
 
-            Students = await studentIQ.AsNoTracking().ToListAsync();
+            int pageSize = 3;
+            Students = await PaginatedList<Student>.CreateAsync(studentIQ.AsNoTracking(), pageIndex ?? 1, pageSize);
         }   
     }
 }
