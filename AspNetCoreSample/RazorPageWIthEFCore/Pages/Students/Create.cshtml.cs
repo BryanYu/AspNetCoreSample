@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using RazorPageWIthEFCore.Data;
 using RazorPageWIthEFCore.Models;
+using RazorPageWIthEFCore.Models.VM;
 
 namespace RazorPageWIthEFCore.Pages.Students
 {
@@ -25,7 +26,7 @@ namespace RazorPageWIthEFCore.Pages.Students
         }
 
         [BindProperty]
-        public Student Student { get; set; }
+        public StudentVM StudentVM { get; set; }
 
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
@@ -36,9 +37,9 @@ namespace RazorPageWIthEFCore.Pages.Students
                 return Page();
             }
 
-            _context.Students.Add(Student);
+            var entry = _context.Add(new Student());
+            entry.CurrentValues.SetValues(StudentVM);
             await _context.SaveChangesAsync();
-
             return RedirectToPage("./Index");
         }
     }

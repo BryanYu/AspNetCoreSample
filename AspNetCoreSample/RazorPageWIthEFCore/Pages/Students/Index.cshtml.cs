@@ -24,6 +24,6 @@ namespace RazorPageWIthEFCore.Pages.Students
         public async Task OnGetAsync()
         {
             Student = await _context.Students.ToListAsync();
-        }
+        }   
     }
 }

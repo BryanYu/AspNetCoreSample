@@ -28,7 +28,11 @@ namespace RazorPageWIthEFCore.Pages.Students
                 return NotFound();
             }
 
-            Student = await _context.Students.FirstOrDefaultAsync(m => m.ID == id);
+            Student = await _context.Students
+                .Include(item => item.Enrollments)
+                .ThenInclude(item2 => item2.Cource)
+                .AsNoTracking()
+                .FirstOrDefaultAsync(item3 => item3.ID == id);
 
             if (Student == null)
             {
