@@ -13,6 +13,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Options;
 
 namespace AspNetCoreWebAPI
@@ -34,6 +35,9 @@ namespace AspNetCoreWebAPI
 
             services.AddSingleton<IBookstoreDatabaseSettings>(sp =>
                 sp.GetRequiredService<IOptions<BookstoreDatabaseSettings>>().Value);
+
+            services.TryAddEnumerable(ServiceDescriptor.Singleton<IAUserInterface, UserService>());
+            services.TryAddEnumerable(ServiceDescriptor.Singleton<IBUserInterface, UserService>());
 
             services.AddSingleton<BookService>();
             services.AddControllers();
