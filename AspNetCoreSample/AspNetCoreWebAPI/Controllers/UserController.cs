@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using AspNetCoreWebAPI.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace AspNetCoreWebAPI.Controllers
@@ -15,18 +16,21 @@ namespace AspNetCoreWebAPI.Controllers
     {
         private readonly IAUserInterface _aUser;
         private readonly IBUserInterface _bUser;
-        
-        public UserController(IAUserInterface aUser, IBUserInterface bUser)
+        private readonly IConfiguration _config;
+
+        public UserController(IAUserInterface aUser, IBUserInterface bUser, IConfiguration config)
         {
             _aUser = aUser;
             _bUser = bUser;
+            _config = config;
         }
 
         [HttpGet]
         [Route("User")]
         public string GetUser()
         {
-            return this._aUser.HelloA() + this._bUser.HelloB();
+            var memory = this._config.GetSection("MemoryKey1");
+            return memory.Value;
         }
     }
 }
