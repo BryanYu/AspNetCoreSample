@@ -19,7 +19,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCoregRPCClient", "Asp
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EFCore", "EFCore", "{DE1A7E00-B16C-4089-9E9B-CB1CC712B977}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RazorPageWIthEFCore", "RazorPageWIthEFCore\RazorPageWIthEFCore.csproj", "{AC8F8C2A-3A44-4F8D-A9BF-851C6AE34251}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RazorPageWIthEFCore", "RazorPageWIthEFCore\RazorPageWIthEFCore.csproj", "{AC8F8C2A-3A44-4F8D-A9BF-851C6AE34251}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

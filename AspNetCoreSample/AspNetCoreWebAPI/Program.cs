@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
@@ -20,8 +21,8 @@ namespace AspNetCoreWebAPI
             Host.CreateDefaultBuilder(args)
                 .ConfigureAppConfiguration(config =>
                 {
-                    config.SetBasePath("//File");
-                    config.AddJsonFile("Setting.json");
+                    config.SetBasePath(Directory.GetCurrentDirectory());
+                    config.AddJsonFile("//File//Setting.json");
                 })
                 .ConfigureWebHostDefaults(webBuilder =>
                 {

@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace AspNetCoreWebAPI.Options
 {
-    public class StartShip
+    public class StarShip
     {
         public string Name { get; set; }
         public string Registry { get; set; }

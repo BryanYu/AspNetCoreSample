@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AspNetCoreWebAPI.Options;
 using AspNetCoreWebAPI.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -27,10 +28,11 @@ namespace AspNetCoreWebAPI.Controllers
 
         [HttpGet]
         [Route("User")]
-        public string GetUser()
+        public ActionResult<StarShip> GetUser()
         {
-            var memory = this._config.GetSection("MemoryKey1");
-            return memory.Value;
+            var starShip = new StarShip();
+            _config.GetSection("starShip").Bind(starShip);
+            return starShip;
         }
     }
 }
