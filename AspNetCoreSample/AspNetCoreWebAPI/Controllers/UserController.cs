@@ -28,11 +28,10 @@ namespace AspNetCoreWebAPI.Controllers
 
         [HttpGet]
         [Route("User")]
-        public ActionResult<StarShip> GetUser()
+        public ActionResult<List<int>> GetUser()
         {
-            var starShip = new StarShip();
-            _config.GetSection("starShip").Bind(starShip);
-            return starShip;
+            var arrayTest = _config.GetSection("arrayTest").Get<List<int>>();
+            return arrayTest;
         }
     }
 }
