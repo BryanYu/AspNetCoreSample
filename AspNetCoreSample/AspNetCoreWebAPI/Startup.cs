@@ -42,6 +42,8 @@ namespace AspNetCoreWebAPI
             services.AddSingleton<BookService>();
             services.AddControllers();
             services.AddControllers().AddNewtonsoftJson(options => options.UseCamelCasing(true));
+
+            services.Configure<MyOptions>(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

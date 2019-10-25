@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AspNetCoreWebAPI.Models;
 using AspNetCoreWebAPI.Options;
 using AspNetCoreWebAPI.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
 
 namespace AspNetCoreWebAPI.Controllers
 {
@@ -15,23 +17,20 @@ namespace AspNetCoreWebAPI.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-        private readonly IAUserInterface _aUser;
-        private readonly IBUserInterface _bUser;
-        private readonly IConfiguration _config;
+        private readonly IOptionsMonitor<MyOptions> _optionAccessor;
 
-        public UserController(IAUserInterface aUser, IBUserInterface bUser, IConfiguration config)
+
+        public UserController(IOptionsMonitor<MyOptions> optionAccessor)
         {
-            _aUser = aUser;
-            _bUser = bUser;
-            _config = config;
+            _optionAccessor = optionAccessor;
         }
 
         [HttpGet]
         [Route("User")]
-        public ActionResult<List<int>> GetUser()
+        public ActionResult<MyOptions> GetUser()
         {
-            var arrayTest = _config.GetSection("arrayTest").Get<List<int>>();
-            return arrayTest;
+            var option = this._optionAccessor.CurrentValue;
+            return option;
         }
     }
 }
