@@ -44,6 +44,12 @@ namespace AspNetCoreWebAPI
             services.AddControllers().AddNewtonsoftJson(options => options.UseCamelCasing(true));
 
             services.Configure<MyOptions>(Configuration);
+
+            services.Configure<MyOptionsWithDelegateConfig>(myOptions =>
+            {
+                myOptions.Option1 = "value1_configured_by_delegate";
+                myOptions.Option2 = 500;
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

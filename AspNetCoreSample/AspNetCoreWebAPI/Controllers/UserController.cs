@@ -18,18 +18,20 @@ namespace AspNetCoreWebAPI.Controllers
     public class UserController : ControllerBase
     {
         private readonly IOptionsMonitor<MyOptions> _optionAccessor;
+        private readonly IOptionsMonitor<MyOptionsWithDelegateConfig> _optionsAccessorWithDelegateConfig;
 
 
-        public UserController(IOptionsMonitor<MyOptions> optionAccessor)
+        public UserController(IOptionsMonitor<MyOptions> optionAccessor, IOptionsMonitor<MyOptionsWithDelegateConfig> optionsAccessorWithDelegateConfig)
         {
             _optionAccessor = optionAccessor;
+            _optionsAccessorWithDelegateConfig = optionsAccessorWithDelegateConfig;
         }
 
         [HttpGet]
         [Route("User")]
-        public ActionResult<MyOptions> GetUser()
+        public ActionResult<MyOptionsWithDelegateConfig> GetUser()
         {
-            var option = this._optionAccessor.CurrentValue;
+            var option = this._optionsAccessorWithDelegateConfig.CurrentValue;
             return option;
         }
     }
