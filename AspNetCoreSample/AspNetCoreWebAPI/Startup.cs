@@ -80,5 +80,63 @@ namespace AspNetCoreWebAPI
                 endpoints.MapControllers();
             });
         }
+
+        
+        
+        // This method gets called by the runtime. Use this method to add services to the container.
+        public void ConfigureServices(IServiceCollection services)
+        {
+            services.Configure<BookstoreDatabaseSettings>(
+                Configuration.GetSection(nameof(BookstoreDatabaseSettings)));
+
+            services.AddSingleton<IBookstoreDatabaseSettings>(sp =>
+                sp.GetRequiredService<IOptions<BookstoreDatabaseSettings>>().Value);
+
+            services.TryAddEnumerable(ServiceDescriptor.Singleton<IAUserInterface, UserService>());
+            services.TryAddEnumerable(ServiceDescriptor.Singleton<IBUserInterface, UserService>());
+
+            services.AddSingleton<BookService>();
+            services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson(options => options.UseCamelCasing(true));
+
+            services.Configure<MyOptions>(Configuration);
+
+            services.Configure<MyOptionsWithDelegateConfig>(myOptions =>
+            {
+                myOptions.Option1 = "value1_configured_by_delegate";
+                myOptions.Option2 = 500;
+            });
+
+            services.Configure<MySubOptions>(Configuration.GetSection("subsection"));
+
+
+            services.Configure<MyOptions>("named_option_1", Configuration);
+            services.Configure<MyOptions>("named_option_2", myOptions =>
+                {
+                    myOptions.Option1 = "named_options_2_value1_from_action";
+                });
+        }
+
+        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        {
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+            }
+
+            app.UseHttpsRedirection();
+
+            app.UseRouting();
+
+            app.UseAuthorization();
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+            });
+        }
+
+        
     }
 }
