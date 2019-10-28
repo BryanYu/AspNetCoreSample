@@ -21,6 +21,11 @@ namespace AspNetCoreWebAPI
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
+                .ConfigureLogging(logging =>
+                {
+                    logging.ClearProviders();
+                    logging.AddConsole();
+                })
                 .ConfigureAppConfiguration(config =>
                 {
                     config.SetBasePath(Directory.GetCurrentDirectory());

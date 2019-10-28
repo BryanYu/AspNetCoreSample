@@ -81,10 +81,8 @@ namespace AspNetCoreWebAPI
             });
         }
 
-        
-        
         // This method gets called by the runtime. Use this method to add services to the container.
-        public void ConfigureServices(IServiceCollection services)
+        public void ConfigureProductionServices(IServiceCollection services)
         {
             services.Configure<BookstoreDatabaseSettings>(
                 Configuration.GetSection(nameof(BookstoreDatabaseSettings)));
@@ -112,13 +110,13 @@ namespace AspNetCoreWebAPI
 
             services.Configure<MyOptions>("named_option_1", Configuration);
             services.Configure<MyOptions>("named_option_2", myOptions =>
-                {
-                    myOptions.Option1 = "named_options_2_value1_from_action";
-                });
+            {
+                myOptions.Option1 = "named_options_2_value1_from_action";
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void ConfigureProduction(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
@@ -137,6 +135,6 @@ namespace AspNetCoreWebAPI
             });
         }
 
-        
+
     }
 }
