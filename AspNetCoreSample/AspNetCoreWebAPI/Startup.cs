@@ -59,6 +59,8 @@ namespace AspNetCoreWebAPI
                 {
                     myOptions.Option1 = "named_options_2_value1_from_action";
                 });
+
+            services.AddHttpClient();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -113,6 +115,8 @@ namespace AspNetCoreWebAPI
             {
                 myOptions.Option1 = "named_options_2_value1_from_action";
             });
+
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
