@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>AspNetCoreSwaggerSample</name>
+    </assembly>
+    <members>
+        <member name="T:AspNetCoreSwaggerSample.Controllers.WeatherForecastController">
+            <summary>
+            天氣控制器
+            </summary>
+        </member>
+        <member name="M:AspNetCoreSwaggerSample.Controllers.WeatherForecastController.#ctor(Microsoft.Extensions.Logging.ILogger{AspNetCoreSwaggerSample.Controllers.WeatherForecastController})">
+            <summary>
+            建構子
+            </summary>
+            <param name="logger"></param>
+        </member>
+        <member name="M:AspNetCoreSwaggerSample.Controllers.WeatherForecastController.Get">
+            <summary>
+            取得天氣資料
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:AspNetCoreSwaggerSample.Controllers.WeatherForecastController.Delete(System.Int64)">
+             <summary>
+             刪除
+             </summary>
+             <remarks>
+             Sample Request:
+            
+                 POST /Todo
+                 {
+                     "id":1,
+                     "name":"Item1",
+                     "isComplete":true
+                 }
+             
+             </remarks>
+             <param name="id">編號</param>
+             <returns></returns>
+        </member>
+        <member name="T:AspNetCoreSwaggerSample.Controllers.Test1">
+            <summary>
+            測試1
+            </summary>
+        </member>
+        <member name="P:AspNetCoreSwaggerSample.Controllers.Test1.Name">
+            <summary>
+            名稱
+            </summary>
+        </member>
+        <member name="T:AspNetCoreSwaggerSample.Controllers.Test2">
+            <summary>
+            測試2
+            </summary>
+        </member>
+        <member name="P:AspNetCoreSwaggerSample.Controllers.Test2.Phone">
+            <summary>
+            手機
+            </summary>
+        </member>
+    </members>
+</doc>

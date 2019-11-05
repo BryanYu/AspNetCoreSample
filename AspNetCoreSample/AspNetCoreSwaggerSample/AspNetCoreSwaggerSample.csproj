@@ -1,10 +1,27 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.0</TargetFramework>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <OutputPath></OutputPath>
+    <DocumentationFile>Comment\AspNetCoreSwaggerSample.xml</DocumentationFile>
+  </PropertyGroup>
+
   <ItemGroup>
+    <Compile Remove="AppData\**" />
+    <Content Remove="AppData\**" />
+    <EmbeddedResource Remove="AppData\**" />
+    <None Remove="AppData\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.0.0-rc4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Comment\" />
   </ItemGroup>
 
 </Project>
